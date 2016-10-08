@@ -1,0 +1,323 @@
+ INTRODUCTION
+
+OpenGL (Open Graphics Library) is an application program interface (API) that is used to define 2D and 3D computer graphics.
+The interface consists of over 250 different function calls which can be used to draw complex three-dimensional scenes from simple primitives. OpenGL was developed by Silicon Graphics Inc. (SGI) in 1992 and is widely used in CAD, virtual reality, scientific visualization, information visualization, and flight simulation.
+OpenGL's basic operation is to accept primitives such as points, lines and polygons, and convert them into pixels. This is done by a graphics pipeline known as the OpenGL state machine.
+
+FEATURES OF OpenGL :-
+
+    Geometric Primitives Allow you to construct mathematical descriptions of objects.
+    Color coding in RGBA (Red-Green-Blue-Alpha) or in color index mode.
+    Viewing and Modeling permits arranging objects in a 3-dimensional scene, move our camera around space and select the desired vantage point for viewing the scene to be rendered.
+    Texture mapping helps to bring realism into our models by rendering images of realistic looking surfaces on to the faces of the polygon in our model.
+    Materials lighting OpenGL provides commands to compute the color of any point given the properties of the material and the sources of light in the room.
+    Double buffering helps to eliminate flickering from animations. Each successive frame in an animation is built in a separate memory buffer and displayed only when rendering of the frame is complete.
+    Anti-aliasing reduces jagged edges in lines drawn on a computer display. Jagged lines often appear when lines are drawn at low resolution. Anti-aliasing is a common computer graphics technique that modifies the color and intensity of the pixels near the line in order to reduce the artificial zig-zag.
+    Gouraud shading is a technique used to apply smooth shading to a 3D object and provide subtle color differences across its surfaces.
+    Z-buffering keeps track of the Z coordinate of a 3D object. The Z-buffer is used to keep track of the proximity of the viewer's object. It is also crucial for hidden surface removal
+    Transformations: rotation, scaling, translations, perspectives in 3D, etc.
+
+
+GLUT Fuctions :-
+The OpenGL Utility Toolkit (GLUT) is a programming interface with ANSI C and FORTRAN bindings for writing window system independent OpenGL programs.
+
+glutInit :-  glutInit is used to initialize the GLUT library.
+
+Syntax:-  void glutInit(int *argcp, char **argv);
+
+argcp
+A pointer to the program's unmodified argc variable from main. Upon return, the value pointed to by argcp will be updated, because glutInit extracts any command line options intended for the GLUT library.
+argv
+The program's unmodified argv variable from main. Like argcp, the data for argv will be updated because glutInit extracts any command line options understood by the GLUT library.
+
+glutInitWindowPosition, glutInitWindowSize :- 
+glutInitWindowPosition and   glutInitWindowSize set the initial window position and size respectively.
+Syntax:-    void glutInitWindowSize(int width, int height);
+                  void glutInitWindowPosition(int x, int y);
+
+width : Width in pixels.
+Height:- Height in pixels.
+x :- Window X location in pixels.
+Y :- Window Y location in pixels.
+
+glutInitDisplayMode:-  glutInitDisplayMode sets the initial display mode.
+
+Syntax:- void glutInitDisplayMode(unsigned int mode);
+
+mode :-  Display mode, normally the bitwise OR-ing of GLUT display mode bit masks. Mode can take following values.
+Values
+	
+Meaning
+GLUT_RGBA
+	
+Bit mask to select an RGBA mode window. This is the default if neither GLUT_RGBA nor GLUT_INDEX are specified.
+GLUT_RGB
+	
+An alias for GLUT_RGBA.
+GLUT_INDEX
+
+	
+Bit mask to select a color index mode window. This overrides GLUT_RGBA if it is also specified.
+GLUT_SINGLE
+
+	
+Bit mask to select a single buffered window. This is the default if neither
+GLUT_DOUBLE
+
+	
+Bit mask to select a double buffered window. This overrides GLUT_SINGLE if it is also specified.
+GLUT_DEPTH
+	
+Bit mask to select a window with a depth buffer.
+
+glutMainLoop:-   glutMainLoop enters the GLUT event processing loop.
+Syntax:- void glutMainLoop(void);
+
+glutCreateWindow:- glutCreateWindow creates a top-level window.
+Syntax:- int glutCreateWindow(char *name);
+name :- ASCII character string for use as window name.
+
+glutPositionWindow:- glutPositionWindow requests a change to the position of the current window.
+Syntax:- void glutPositionWindow(int x, int y);
+x :- New X location of window in pixels.
+Y :- New Y location of window in pixels.
+
+glutReshapeFunc :-   glutReshapeFunc sets the reshape callback for the current window.
+Syntax:- void glutReshapeFunc(void (*func)(int width, int height));
+func :- The new reshape callback function.
+
+glutDisplayFunc:-   glutDisplayFunc sets the display callback for the current window.
+Syntax:- void glutDisplayFunc(void (*func)(void));
+func :- The new display callback function.
+
+glutKeyboardFunc :- glutKeyboardFunc sets the keyboard callback for the current window.
+Syntax:- void glutKeyboardFunc(void (*func)(unsigned char key,  int x, int y));
+func :- The new keyboard callback function.
+
+glutMouseFunc:-   glutMouseFunc sets the mouse callback for the current window.
+Syntax:- void glutMouseFunc(void (*func)(int button, int state, int x, int y));
+func :- The new mouse callback function.
+
+GL Fuctions :-
+glBegin & glEnd :- The glBegin and glend functions delimit the vertices of a primitive or a group of like primitives.
+Syntax :- void glBegin( GLenum mode );
+mode :- The primitive or primitives that will be created from vertices presented between glBegin and the subsequent glEnd. The following are accepted symbolic constants and their meanings:
+
+Value
+	
+Meaning
+GL_POINTS
+	
+Treats each vertex as a single point. Vertex n defines point n. N points are drawn.
+GL_LINES
+	
+Treats each pair of vertices as an independent line segment. Vertices 2n - 1 and 2n define line n. N/2 lines are drawn.
+GL_LINE_STRIP
+	
+Draws a connected group of line segments from the first vertex to the last. Vertices n and n+1 define line n. N - 1 lines are drawn.
+GL_LINE_LOOP
+	
+Draws a connected group of line segments from the first vertex to the last, then back to the first. Vertices n and n + 1 define line n. The last line, however, is defined by vertices N and 1. N lines are drawn.
+GL_TRIANGLES
+	
+Treats each triplet of vertices as an independent triangle. Vertices 3n - 2, 3n - 1, and 3n define triangle n. N/3 triangles are drawn.
+GL_TRIANGLE_STRIP
+	
+Draws a connected group of triangles. One triangle is defined for each vertex presented after the first two vertices. For odd n, vertices n, n + 1, and n + 2 define triangle n. For even n, vertices n + 1, n, and n + 2 define triangle n. N - 2 triangles are drawn.
+GL_TRIANGLE_FAN
+	
+Draws a connected group of triangles. one triangle is defined for each vertex presented after the first two vertices. Vertices 1, n + 1, n + 2 define triangle n. N - 2 triangles are drawn.
+GL_QUADS
+	
+Treats each group of four vertices as an independent quadrilateral. Vertices 4n - 3, 4n - 2, 4n - 1, and 4n define quadrilateral n. N/4 quadrilaterals are drawn.
+GL_QUAD_STRIP
+	
+Draws a connected group of quadrilaterals. One quadrilateral is defined for each pair of vertices presented after the first pair. Vertices 2n - 1, 2n, 2n + 2, and 2n + 1 define quadrilateral n. N/2 - 1 quadrilaterals are drawn. Note that the order in which vertices are used to construct a quadrilateral from strip data is different from that used with independent data.
+GL_POLYGON
+	
+Draws a single, convex polygon. Vertices 1 through N define this polygon.
+
+glclear :- The glClear function clears buffers to preset values.
+Syntax:-  void glClear(GLbitfield mask);
+mask :- Bitwise OR operators of masks that indicate the buffers to be cleared. The four masks are as follows.
+
+Value
+	
+Meaning
+GL_COLOR_BUFFER_BIT
+	
+The buffers currently enabled for color writing.
+GL_DEPTH_BUFFER_BIT
+	
+The depth buffer.
+GL_ACCUM_BUFFER_BIT
+	
+The accumulation buffer.
+GL_STENCIL_BUFFER_BIT
+	
+The stencil buffer.
+
+glClearColor:- The glClearColor function specifies clear values for the color buffers.
+Syntax :-void glClearColor(red, green, blue, alpha);
+red :- The red value that glClear uses to clear the color buffers. The default value is zero.
+green :-The green value that glClear uses to clear the color buffers. The default value is zero.
+blue :- The blue value that glClear uses to clear the color buffers. The default value is zero.
+alpha :-The alpha value that glClear uses to clear the color buffers. The default value is zero.
+glColor3i :- Sets the current color.
+Syntax :- void glColor3i(GLint red, GLint green, GLint blue);
+red :- The new red value for the current color.
+green :-The new green value for the current color.
+blue :- The new blue value for the current color.
+glColor3fv:- Sets the current color from an already existing array of color values.
+Syntax :- void glColor3fv(const GLfloat *v);
+V:- A pointer to an array that contains red, green, and blue values.
+
+glEnable, glDisable :- The glEnable and glDisable functions enable or disable OpenGL capabilities.
+Syntax :- void glEnable(GLenum cap);
+     void glDisable(GLenum cap);
+cap :-  Both glEnable and glDisable take a single argument, cap, which can assume one of the following values:
+
+
+Value
+	
+Meaning
+GL_DEPTH_TEST
+	
+If enabled, do depth comparisons and update the depth buffer. See glDepthFunc and glDepthRange.
+GL_LINE_SMOOTH
+	
+If enabled, draw lines with correct filtering. If disabled, draw aliased lines. See glLineWidth.
+GL_LINE_STIPPLE
+	
+If enabled, use the current line stipple pattern when drawing lines. See glLineStipple.
+GL_NORMALIZE
+	
+If enabled, normal vectors specified with glNormal are scaled to unit length after transformation. See glNormal.
+GL_POINT_SMOOTH
+	
+If enabled, draw points with proper filtering. If disabled, draw aliased points. See glPointSize.
+
+glFlush:- The glFlush function forces execution of OpenGL functions in finite time.
+Syntax:- void glFlush(void);
+This function has no parameters.
+glFrustum:- The glFrustum function multiplies the current matrix by a perspective matrix.
+Syntax :- void glFrustum(GLdouble left, GLdouble right, GLdouble bottom,
+                GLdouble top, GLdouble zNear, GLdouble zFar);
+left :- The coordinate for the left-vertical clipping plane.
+right :- The coordinate for the right-vertical clipping plane.
+bottom :- The coordinate for the bottom-horizontal clipping plane.
+top :- The coordinate for the bottom-horizontal clipping plane.
+zNear :-The distances to the near-depth clipping plane. Must be positive.
+zFar :- The distances to the far-depth clipping planes. Must be positive.
+glLightfv:- The glLightfv function returns light source parameter values.
+Syntax:-  void glLightfv(GLenum light, GLenum pname, const GLfloat *params);
+
+Light:-  The identifier of a light. The number of possible lights depends on the implementation, but at least eight lights are supported. They are identified by symbolic names of the form GL_LIGHTi where i is a value: 0 to GL_MAX_LIGHTS - 1.
+
+pname :- A single-valued light source parameter for light. The following symbolic names are accepted.
+Value
+	
+Meaning
+GL_AMBIENT
+	
+The params parameter contains four floating-point values that specify the ambient RGBA intensity of the light. Floating-point values are mapped directly. Neither integer nor floating-point values are clamped. The default ambient light intensity is (0.0, 0.0, 0.0, 1.0).
+GL_DIFFUSE
+	
+The params parameter contains four floating-point values that specify the diffuse RGBA intensity of the light. Floating-point values are mapped directly. Neither integer nor floating-point values are clamped. The default diffuse intensity is (0.0, 0.0, 0.0, 1.0) for all lights other than light zero. The default diffuse intensity of light zero is (1.0, 1.0, 1.0, 1.0).
+GL_SPECULAR
+	
+The params parameter contains four floating-point values that specify the specular RGBA intensity of the light. Floating-point values are mapped directly. Neither integer nor floating-point values are clamped. The default specular intensity is (0.0, 0.0, 0.0, 1.0) for all lights other than light zero. The default specular intensity of light zero is (1.0, 1.0, 1.0, 1.0).
+GL_POSITION
+	
+The params parameter contains four floating-point values that specify the position of the light in homogeneous object coordinates. Both integer and floating-point values are mapped directly. Neither integer nor floating-point values are clamped.
+
+
+param :- Specifies the value that parameter pname of light source light will be set to.
+glLoadIdentity :-  The glLoadIdentity function replaces the current matrix with the identity matrix.
+Syntax :-  void WINAPI glLoadIdentity(void);’
+glMatrixMode:- The glMatrixMode function specifies which matrix is the current matrix.
+Syntax:- void glMatrixMode(GLenum mode);
+
+mode :- The matrix stack that is the target for subsequent matrix operations. The mode parameter can assume one of three values.
+
+Value
+	
+Meaning
+GL_MODELVIEW
+	
+Applies subsequent matrix operations to the modelview matrix stack.
+GL_PROJECTION
+	
+Applies subsequent matrix operations to the projection matrix stack.
+GL_TEXTURE
+	
+Applies subsequent matrix operations to the texture matrix stack.
+
+glOrtho:- The glOrtho function multiplies the current matrix by an orthographic matrix.
+Syntax:-  void glOrtho(GLdouble left, GLdouble right, GLdouble bottom,
+                    GLdouble top, GLdouble zNear, GLdouble zFar);
+
+left :-The coordinates for the left vertical clipping plane.
+right :- The coordinates for theright vertical clipping plane.
+Bottom:- The coordinates for the bottom horizontal clipping plane.
+top :- The coordinates for the top horizontal clipping plans.
+zNear :- The distances to the nearer depth clipping plane. This distance is negative if the plane is to be behind the viewer.
+zFar :- The distances to the farther depth clipping plane. This distance is negative if the plane is to be behind the viewer.
+glPointSize :- The glPointSize function specifies the diameter of rasterized points.
+Syntax :- void glPointSize(GLfloat size);
+
+Size:-The diameter of rasterized points. The default is 1.0.
+
+glPushMatrix & glPopMatrix:- The glPushMatrix and glPopMatrix functions push and pop the current matrix stack.
+Syntax:- void WINAPI glPopMatrix(void);
+glRotatef:- The glRotatef function multiplies the current matrix by a rotation matrix.
+Syntax :- void glRotatef(GLfloat angle, GLfloat x, GLfloat y, GLfloat z);
+
+angle :- The angle of rotation, in degrees.
+X :- The x coordinate of a vector.
+y :- The y coordinate of a vector.
+z :- The z coordinate of a vector.
+glScalef :- The glScaled and glScalef functions multiply the current matrix by a general scaling matrix.
+Syntax :- void glScalef(GLfloat x, GLfloat y, GLfloat z);
+
+x :- Scale factors along the x axis.
+y :- Scale factors along the y axis.
+z :- Scale factors along the z axis.
+glTranslatef :- The glTranslatef function multiplies the current matrix by a translation matrix.
+Syntax:- void glTranslatef(GLfloat x, GLfloat y, GLfloat z);
+
+x :- The x coordinate of a translation vector.
+y :- The y coordinate of a translation vector.
+z :- The z coordinate of a translation vector.
+glVertex2d :- Specifies a vertex.
+Syntax:- void glVertex2d(GLdouble x, GLdouble y);
+
+x :- Specifies the x-coordinate of a vertex.
+y :-Specifies the y-coordinate of a vertex.
+glViewport :- The glViewport function sets the viewport.
+Syntax:- void glViewport(GLint x, GLint y, GLsizei width, GLsizei height);
+
+x :- The lower-left corner of the viewport rectangle, in pixels. The default is (0,0).
+y :- The lower-left corner of the viewport rectangle, in pixels. The default is (0,0).
+Width :-The width of the viewport. When an OpenGL context is first attached to a window, width and height are set to the dimensions of that window.
+height :- The height of the viewport. When an OpenGL context is first attached to a window, width and height are set to the dimensions of that window.
+GLU Functions :-
+gluLookAt :- The gluLookAt function defines a viewing transformation.
+Syntax:- void gluLookAt(GLdouble eyex, GLdouble eyey, GLdouble eyez,
+                                  GLdouble centerx, GLdouble centery,GLdouble centerz,
+                                   GLdouble upx, GLdouble upy, GLdouble upz);
+eyex :- The position of the eye point.
+eyey :-The position of the eye point.
+eyez :- The position of the eye point.
+centerx :- The position of the reference point.
+centery :- The position of the reference point.
+centerz :- The position of the reference point.
+upx :- The direction of the up vector.
+upy :- The direction of the up vector.
+upz :- The direction of the up vector.
+gluOrtho2D :- The gluOrtho2D function defines a 2-D orthographic projection matrix.
+Syntax :- void gluOrtho2D(GLdouble left, GLdouble right, GLdouble top, GLdouble bottom);
+left :- The coordinate for the left vertical clipping plane.
+right :- The coordinate for the right vertical clipping plane.
+top :- The coordinate for the top horizontal clipping plane.
+bottom :- The coordinate for the bottom horizontal clipping plane
