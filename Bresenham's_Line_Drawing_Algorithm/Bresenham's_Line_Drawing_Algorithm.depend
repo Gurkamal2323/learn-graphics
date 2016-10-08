@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1475915190 source:f:\semester 5\graphics and visual computing\lab\bresenham's_line_drawing_algorithm\main.cpp
+	<stdio.h>
+	<GL/gl.h>
+	<GL/glut.h>
+
