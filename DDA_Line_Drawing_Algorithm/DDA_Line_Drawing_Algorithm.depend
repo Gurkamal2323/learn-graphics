@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1475913364 source:f:\semester 5\graphics and visual computing\lab\dda_line_drawing_algorithm\main.cpp
+	<stdio.h>
+	<math.h>
+	<GL/glut.h>
+
