@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1475920403 source:f:\semester 5\graphics and visual computing\lab\learn-graphics\bresenham's_ellipse_drawing_algorithm\main.cpp
+	<stdio.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<GL/glut.h>
+
