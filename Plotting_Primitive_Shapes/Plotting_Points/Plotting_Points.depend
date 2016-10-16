@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1476623815 source:f:\semester 5\graphics and visual computing\lab\learn-graphics\plotting_primitive_shapes\plotting_points\main.cpp
+	<windows.h>
+	<GL/glut.h>
+
