@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1476626684 source:f:\semester 5\graphics and visual computing\lab\learn-graphics\using_primitive_shapes_to_create_american_flag\main.cpp
+	<windows.h>
+	<GL/glut.h>
+	<cmath>
+
