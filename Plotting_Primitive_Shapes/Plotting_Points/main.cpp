@@ -2,6 +2,7 @@
 #include <GL/glut.h>  // GLUT, includes glu.h and gl.h
 
 void Draw() {
+    //clear all pixels
 	glClear(GL_COLOR_BUFFER_BIT);
 	glColor3f(1.0, 1.0, 1.0);
 	//draw points based on these coordinates
@@ -19,16 +20,25 @@ void Draw() {
 }
 
 void Initialize() {
-	glClearColor(0.0, 0.0, 0.0, 0.0);
+    //select background color
+	glClearColor(0,0,0,1);
+	//initialize viewing angles
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glOrtho(0.0, 1.0, 0.0, 1.0, -1.0, 1.0);
 }
 
 int main(int iArgc, char** cppArgv) {
+    /*
+ *  Declare initial window size, position, and display mode
+ *  (single buffer and RGBA).  Open window with "Plotting Primitives"
+ *  in its title bar.  Call initialization routines.
+ *  Register callback function to display graphics.
+ *  Enter main loop and process events.
+ */
 	glutInit(&iArgc, cppArgv);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-	glutInitWindowSize(250, 250);
+	glutInitWindowSize(720,1080);
 	glutInitWindowPosition(200, 200);
 	glutCreateWindow("Plotting Primitives");
 	Initialize();

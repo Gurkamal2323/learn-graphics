@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1476793176 source:c:\users\dell\desktop\program\main.cpp
+	<windows.h>
+	<GL/glut.h>
+	<stdio.h>
+
