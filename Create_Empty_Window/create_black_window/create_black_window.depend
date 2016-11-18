@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1479476458 source:f:\semester 5\graphics and visual computing\lab\learn-graphics\create_empty_window\create_black_window\main.cpp
+	<windows.h>
+	<GL/glut.h>
+
